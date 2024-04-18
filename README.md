@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# CarFactory Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+El componente `CarFactory` simula una fábrica de automóviles en diferentes etapas de producción. Muestra el estado actual de la producción, que cambia en intervalos de tiempo predefinidos.
 
-Currently, two official plugins are available:
+## Detalles de Implementación
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Importaciones
+- `React` y `Component` son importados desde el paquete 'react' para definir componentes de React.
 
-## Expanding the ESLint configuration
+### Interfaz de Estado
+- Define una interfaz `CarFactoryState` que especifica la estructura del estado del componente. En este caso, solo hay un campo `productionStatus` que es una cadena.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Definición del Componente
+- Define la clase `CarFactory` que extiende `Component`. Toma dos argumentos de tipo genérico, siendo el primero para las propiedades (en este caso, no se utilizan) y el segundo para el estado (`CarFactoryState`).
 
-- Configure the top-level `parserOptions` property like this:
+### Constructor
+- Inicializa el estado del componente con `productionStatus` establecido en `'Idle'`.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### componentDidMount
+- Se llama después de que el componente se monta en el DOM. Después de 2 segundos, actualiza el estado para establecer `productionStatus` en `'Production Started'`.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### componentDidUpdate
+- Se llama después de que el componente se actualiza en el DOM. Actualiza el estado en intervalos de 2 segundos según el estado actual de `productionStatus`.
+
+### Renderización
+- Retorna la estructura JSX del componente, mostrando el estado actual de la producción.
+
+### Exportación del Componente
+- Exporta el componente `CarFactory` para su uso en otros archivos.
